@@ -1,2 +1,13 @@
-# Nasa-app
-Project React Course using API nasa
+# react-blog
+
+Clone this repo and run
+
+```
+yarn install
+```
+
+Run it with
+
+```
+yarn start
+```

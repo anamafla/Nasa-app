@@ -1,0 +1,4 @@
+export default {
+  SET_SEARCH_TERM: 'SET_SEARCH_TERM',
+  RECEIVE_RESULTS: 'RECEIVE_RESULTS',
+};
