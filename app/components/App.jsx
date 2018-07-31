@@ -4,7 +4,9 @@ import axios from 'axios';
 import Home from './Home';
 import Details from './Details';
 import Search from './Search';
-
+import { connect } from 'react-redux';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 class App extends Component {
 
@@ -12,8 +14,6 @@ class App extends Component {
     super(props);
     this.state = {
       isSearching: false,
-      searchTerm: '',
-      results: [],
       showDetails: false,
       item: {
         title: '',
@@ -21,16 +21,6 @@ class App extends Component {
         description: '',
       },
     };
-  }
-
-  handleSearchTermChange = event =>
-  this.setState({ searchTerm: event.target.value });
-
-  handleClick = event => {
-    event.preventDefault();
-    this.getFetchData();
-    const isSearching = true;
-    this.setState({ isSearching });
   }
 
   handleClickSeeMore= (item) => {
@@ -51,53 +41,32 @@ class App extends Component {
     this.setState({ showDetails });
   };
 
-  // Getting data with axios
-  getFetchData = () => {
-    axios.get(`https://images-api.nasa.gov/search?q=${this.state.searchTerm}`)
-    .then(response => {
-      console.log(response.data.collection.items);
-      const results = response.data.collection.items.filter(item => item.data[0].media_type === 'image');
-      this.setState({ results, showDetails: false, isSearching: false });
-    }).catch((error) => {
-      console.log(error, 'failed to fetch data');
-    });
-  }
-
   render() {
     return (
       <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (<Home
-              {...props}
-              handleSearchTermChange={this.handleSearchTermChange}
-              handleClick={this.handleClick}
-            />)}
-          />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={Home}
+            />
 
-          <Route
-            path="/search"
-            render={props => (<Search
-              {...props}
-              handleSearchTermChange={this.handleSearchTermChange}
-              handleClick={this.handleClick}
-              handleClickSeeMore={this.handleClickSeeMore}
-              results={this.state.results}
-              searchTerm={this.state.searchTerm}
-              isSearching={this.state.isSearching}
-            />)}
-          />
+            <Route
+              path="/search"
+              render={props => (<Search
+                handleClickSeeMore={this.handleClickSeeMore}
+                isSearching={this.state.isSearching}
+              />)}
+            />
 
-          <Route
-            path="/details/:id"
-            render={props =>
-              <Details {...props} item={this.state.item} />}
-          />
+            <Route
+              path="/details/:id"
+              render={props =>
+                <Details {...props} item={this.state.item} />}
+            />
 
 
-        </Switch>
+          </Switch>
 
 
       </BrowserRouter>
@@ -105,4 +74,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps= state => ({
+  searchTerm: state.searchTerm
+});
+
+export default connect (mapStateToProps)(App);

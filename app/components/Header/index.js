@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
 
@@ -15,22 +16,20 @@ const Header = (props) => {
    );
   } else {
     utilSpace = (
-      <h2>
-        <Link to="/search">
+      <Link to="/search">
+        <Button color="inherit">
     Back
-        </Link>
-      </h2>
+        </Button>
+      </Link>
 );
   }
 
   return (
     <AppBar position="static" color="primary">
       <Toolbar>
-        <h2>
-          <Link to="/">
+        <Button href="/" color="inherit">
         Home
-          </Link>
-        </h2>
+        </Button>
         {utilSpace}
       </Toolbar>
     </AppBar>

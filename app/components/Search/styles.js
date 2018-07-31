@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 
 export const DivStyled = styled.div`
-  padding: 20px 0 20px 0;
+  padding: 40px 0 20px 0;
   text-align: center;
   margin: 0 0 0 0;
-  background-color: black;
-  color: white;
-  background: #000000;
-
-  h1, h3 {
-    font-family: Helvetica;
-  }
-
-
+  background-color: white;
+  color: black;
+  font-family: Helvetica;
+  font-size: 20px;
 `;
 
 export const SectionStyled = styled.section`
