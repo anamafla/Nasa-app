@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Results from '../Results';
 import Header from '../Header';
 import { setSearchTerm, getData } from '../../redux/actions';
-import { DivStyled, SectionStyled } from './styles';
+import { DivStyled, SectionStyled, ResultsContainer } from './styles';
 
 const Search = (props) => (
   <div>
@@ -28,7 +28,7 @@ const Search = (props) => (
         </Button>
       </div>
     </SectionStyled>
-    <div>
+    <ResultsContainer>
       {props.resultsLoading ?
           (<CircularProgress />) :
           (<Fragment>
@@ -38,11 +38,11 @@ const Search = (props) => (
                 {...item}
                 handleClickSeeMore={props.handleClickSeeMore}
               />))}
-            <div>
-              {props.resultsMessage && <DivStyled>{ props.resultsMessage }</DivStyled>}
-            </div>
+
+            {props.resultsMessage && <DivStyled>{ props.resultsMessage }</DivStyled>}
+
           </Fragment>)}
-    </div>
+    </ResultsContainer>
   </div>
 
   );
@@ -52,6 +52,7 @@ Search.propTypes = {
   searchTerm: PropTypes.string.isRequired,
   results: PropTypes.array.isRequired,
   resultsLoading: PropTypes.bool.isRequired,
+  resultsMessage: PropTypes.string,
   handleSearchTermChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleClickSeeMore: PropTypes.func.isRequired,

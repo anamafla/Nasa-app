@@ -5,17 +5,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled(Link)`
- text-decoration: none;  
+ text-decoration: none;
 `;
-
 
 export const CardStyled = styled(Card)`
   margin: 1rem 2rem 2rem 1rem;
   display: flex;
-  width: 80%;
-  align-items: center;
-
-
 `;
 
 export const CardMediaStyled = styled(CardMedia)`

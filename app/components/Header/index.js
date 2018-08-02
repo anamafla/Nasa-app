@@ -25,7 +25,7 @@ const Header = (props) => {
   }
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="default">
       <Toolbar>
         <Button href="/" color="inherit">
         Home

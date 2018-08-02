@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { DivStyled, DivArtStyled, SectionStyled } from './styles';
+import { Wrapper, DivStyled, DivArtStyled, SectionStyled } from './styles';
 import { setSearchTerm, getData } from '../../redux/actions';
 
 class Home extends Component {
@@ -15,18 +15,18 @@ class Home extends Component {
   }
   render() {
     return (
-      <div>
+      <Wrapper>
         <DivStyled>
           <h1>
            NASA
           </h1>
-          <h3>IMAGE LIBRARY</h3>
+          <h2>BROWSER</h2>
         </DivStyled>
         <DivStyled>
           <form onSubmit={this.goToSearch}>
             <input
               type="text"
-              placeholder="Search"
+              placeholder="Search for...(e.g. 'Nebula', 'Galaxy' )"
               onChange={this.props.handleSearchTermChange}
               value={this.props.searchTerm}
             />
@@ -38,13 +38,15 @@ class Home extends Component {
           </Button>
         </DivStyled>
         <DivArtStyled>
-          <h3>Explore the Universe through image library from Nasa</h3>
+          Explore the Universe through image library from Nasa
         </DivArtStyled>
         <SectionStyled>
-          <h4>Somewhere, something incredible is waiting to be known</h4>
-          <h4>Carl Sagan </h4>
+          <footer>
+            <h4>Somewhere, something incredible is waiting to be known</h4>
+            <h4>Carl Sagan </h4>
+          </footer>
         </SectionStyled>
-      </div>
+      </Wrapper>
     );
   }
 

@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import Home from './Home';
 import Details from './Details';
 import Search from './Search';
-import { connect } from 'react-redux';
-import { Provider } from 'react-redux';
-import store from '../redux/store';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isSearching: false,
       showDetails: false,
       item: {
         title: '',
@@ -24,8 +20,6 @@ class App extends Component {
   }
 
   handleClickSeeMore= (item) => {
-    console.log('Here in handleClickSeeMore');
-    console.log('item', item);
     const { title, description } = item.data[0];
     const showDetails = true;
     const src = item.links[0].href;
@@ -44,29 +38,28 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={Home}
-            />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={Home}
+          />
 
-            <Route
-              path="/search"
-              render={props => (<Search
-                handleClickSeeMore={this.handleClickSeeMore}
-                isSearching={this.state.isSearching}
-              />)}
-            />
+          <Route
+            path="/search"
+            render={() => (<Search
+              handleClickSeeMore={this.handleClickSeeMore}
+            />)}
+          />
 
-            <Route
-              path="/details/:id"
-              render={props =>
-                <Details {...props} item={this.state.item} />}
-            />
+          <Route
+            path="/details/:id"
+            render={props =>
+              <Details {...props} item={this.state.item} />}
+          />
 
 
-          </Switch>
+        </Switch>
 
 
       </BrowserRouter>
@@ -74,8 +67,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps= state => ({
-  searchTerm: state.searchTerm
+const mapStateToProps = state => ({
+  searchTerm: state.searchTerm,
 });
 
-export default connect (mapStateToProps)(App);
+export default connect(mapStateToProps)(App);

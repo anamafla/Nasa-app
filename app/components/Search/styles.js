@@ -10,6 +10,10 @@ export const DivStyled = styled.div`
   font-size: 20px;
 `;
 
+export const ResultsContainer = styled.div`
+  
+`;
+
 export const SectionStyled = styled.section`
   padding: 20px 0 20px 0;
   margin: 0 0 0 0;

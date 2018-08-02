@@ -1,4 +1,4 @@
-# react-blog
+# nasa-app
 
 Clone this repo and run
 
