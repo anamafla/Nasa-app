@@ -15,12 +15,14 @@ const Search = (props) => (
     />
     <SectionStyled>
       <div>
-        <input
-          placeholder="What are you looking for?"
-          onChange={props.handleSearchTermChange}
-          value={props.searchTerm}
-          type="text"
-        />
+        <form onSubmit={props.handleClick}>
+          <input
+            placeholder="What are you looking for?"
+            onChange={props.handleSearchTermChange}
+            value={props.searchTerm}
+            type="text"
+          />
+        </form>
       </div>
       <div>
         <Button variant="contained" color="default" onClick={props.handleClick}>
@@ -69,7 +71,8 @@ const mapDispatchToProps = (dispatch) => ({
   handleSearchTermChange(event) {
     dispatch(setSearchTerm(event.target.value));
   },
-  handleClick() {
+  handleClick(e) {
+    e.preventDefault();
     dispatch(getData());
   },
 });

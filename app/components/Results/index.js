@@ -7,9 +7,10 @@ import { Wrapper, CardStyled, CardMediaStyled, CardContentStyled } from './style
 const Results = (props) => (
   <Wrapper to={`/details/${props.data[0].nasa_id}`}>
     <CardStyled key={props.data[0].nasa_id} >
-      <CardMediaStyled>
-        <img src={props.links[0].href} alt={props.data[0].title} />
-      </CardMediaStyled>
+      <CardMediaStyled
+        style={{ height: '200px', width: '200px' }}
+        image={props.links[0].href}
+      />
       <CardContentStyled>
         <Typography variant="headline">{props.data[0].title}</Typography>
         <Typography variant="subheading" color="textSecondary">

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Wrapper, DivStyled, DivArtStyled, SectionStyled } from './styles';
 import { setSearchTerm, getData } from '../../redux/actions';
@@ -32,9 +31,7 @@ class Home extends Component {
             />
           </form>
           <Button variant="contained" onClick={this.goToSearch} >
-            <Link to="/search">
            Search
-            </Link>
           </Button>
         </DivStyled>
         <DivArtStyled>
