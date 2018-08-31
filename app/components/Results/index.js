@@ -14,7 +14,7 @@ const Results = (props) => (
       <CardContentStyled>
         <Typography variant="headline">{props.data[0].title}</Typography>
         <Typography variant="subheading" color="textSecondary">
-          {props.data[0].description.slice(0, 150)}
+          {props.data[0].description && props.data[0].description.slice(0, 150)}
         </Typography>
         <div>
           <Button onClick={() => props.handleClickSeeMore(props)}>SEE MORE </Button>

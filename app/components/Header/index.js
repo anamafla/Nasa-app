@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
-
 const Header = (props) => {
   let utilSpace;
 

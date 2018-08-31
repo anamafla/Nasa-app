@@ -4,8 +4,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-content: space-around;
-
-
 `;
 
 export const DivStyled = styled.div`
@@ -55,11 +53,15 @@ export const SectionStyled = styled.section`
   padding: 20px 0 20px 0;
   margin: 0 0 0 0;
   text-align: center;
-  background: #757F9A;
-  background: -webkit-linear-gradient(to bottom, #D7DDE8, #757F9A);
-  background: linear-gradient(to bottom, #D7DDE8, #757F9A);
+  background: white;
 
   div {
     padding: 10px 0 10px 0;
+  }
+  footer {
+    position:fixed;
+    width: 100%;
+    bottom:0;
+    text-align: center;
   }
 `;

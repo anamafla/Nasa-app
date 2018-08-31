@@ -25,7 +25,7 @@ export function getData() {
     axios.get(`https://images-api.nasa.gov/search?q=${term}`)
   .then(response => {
     console.log('response.data.collection.items', response.data.collection.items);
-    const dataResponse = response.data.collection.items.filter(item => item.data[0].media_type === 'image');
+    const dataResponse = response.data.collection.items.filter(item => item.data[0].media_type === 'image').slice(0, 40);
     if (dataResponse.length === 0) {
       dispatch(resultMessage(`No found results for your search ${term}`));
     }

@@ -10,9 +10,13 @@ const Details = (props) => (
     <DivStyled>
       <Typography variant="display2">{props.item.title}</Typography>
       <img alt={props.item.title} src={props.item.src} />
+
       <Typography variant="subheading" color="textSecondary">
-        {props.item.description}
+        <p>
+          {props.item.description}
+        </p>
       </Typography>
+
       <Typography variant="subheading" color="textSecondary" />
     </DivStyled>
   </div>
